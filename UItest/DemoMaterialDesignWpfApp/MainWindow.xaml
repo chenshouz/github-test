@@ -1,0 +1,88 @@
+﻿<Window x:Class="DemoMaterialDesignWpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoMaterialDesignWpfApp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="828.418" Width="1472.781" Background="#FFA24D68">
+
+    <Grid Margin="0,0,2,-52" Background="#FF13933C" Cursor="SizeNWSE">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="939*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="66*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card Padding="32" Margin="16,16,16,0" Background="#FF891F1F" Grid.ColumnSpan="4" Height="156">
+            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Foreground="#FFDAC6C6" FontSize="48" FontStyle="Italic" TextDecorations="{x:Null}" FontWeight="{DynamicResource {x:Static SystemFonts.IconFontWeightKey}}" FontFamily="Impact"><Run Text="SAA迅得"/><Run Text="使用者中心"/></TextBlock>
+        </materialDesign:Card>
+        <Button Content="張宸碩" HorizontalAlignment="Left" Margin="984,227,0,0" VerticalAlignment="Top" Width="302" Height="54" FontSize="24" Background="#FF394EC5"/>
+        <Grid HorizontalAlignment="Left" Height="114" Margin="704,300,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="49" Margin="252,264,0,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="226" FontSize="24" TextChanged="TextBox_TextChanged" BorderBrush="#89050713" Foreground="#FFF0D7D7" Background="Transparent" CharacterCasing="Lower" />
+        <TabControl HorizontalAlignment="Left" Height="146" Margin="674,240,0,0" VerticalAlignment="Top" Width="238" RenderTransformOrigin="0.5,0.5">
+            <TabControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.092"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TabControl.RenderTransform>
+            <TabItem Header="帳號" Margin="-2,-2,-20,-17">
+                <Grid Background="#FF2AAC88" Margin="-10,-4,-2,-4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="41*"/>
+                        <ColumnDefinition Width="75*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="38" Margin="31,29,0,0" TextWrapping="Wrap" Text="Shuo&#xD;&#xA;" VerticalAlignment="Top" Width="149" FontSize="22" FontWeight="Bold" TextChanged="TextBox_TextChanged_1" TextOptions.TextFormattingMode="Display" TextOptions.TextHintingMode="Animated" IsReadOnly="True" IsUndoEnabled="False"/>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="密碼" Margin="18,-6,-39,-16">
+                <Grid Background="#FF10214F" Margin="-11,-4,-3,-4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="150*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="53" Margin="10,20,0,0" TextWrapping="Wrap" Text="123456" VerticalAlignment="Top" Width="163" FontSize="22" Grid.ColumnSpan="4" TextChanged="TextBox_TextChanged_1" FontWeight="ExtraBold" TextOptions.TextHintingMode="Fixed" Foreground="#FFD9E2DF" CaretBrush="#FF761C08" BorderBrush="#89F5E8E8" AutomationProperties.IsRequiredForForm="True" IsReadOnly="True"/>
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+        <Button Content="送出" HorizontalAlignment="Left" Margin="483,332,0,0" VerticalAlignment="Top" Width="79" Height="36" FontSize="20"/>
+        <TextBox HorizontalAlignment="Left" Height="48" Margin="252,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" FontSize="24" TextChanged="TextBox_TextChanged" BorderBrush="#89191719" FontStretch="ExtraExpanded" MinLines="20" Foreground="#FFDCC4C4" CharacterCasing="Lower"/>
+        <Calendar HorizontalAlignment="Left" Height="370" Margin="1001,358,0,0" VerticalAlignment="Top" Width="274" FontSize="10"/>
+        <CheckBox Content="是我本人" HorizontalAlignment="Left" Height="71" Margin="483,247,0,0" VerticalAlignment="Top" Width="109" Checked="CheckBox_Checked" FontSize="20" FontFamily="Sitka Text" BorderBrush="#FF122176" IsChecked="True"/>
+        <Label Content="帳號:" HorizontalAlignment="Left" Margin="139,264,0,0" VerticalAlignment="Top" Height="54" Width="94" FontSize="36"/>
+        <Label Content="密碼:" HorizontalAlignment="Left" Margin="139,323,0,0" VerticalAlignment="Top" Height="54" Width="94" FontSize="36"/>
+        <ScrollBar Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Height="529" Margin="0,222,0,0" VerticalAlignment="Top" Width="56" Background="#FF833333" FontFamily="MingLiU_HKSCS"/>
+        <DataGrid Name="dgUsers"
+  ItemsSource="{Binding Items3}"
+  CanUserSortColumns="False"
+  CanUserAddRows="False"
+            
+  materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+  materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2" Margin="139,415,815,191" SelectionChanged="DataGrid_SelectionChanged" />
+        <ProgressBar
+  Orientation="Vertical"
+  Height="Auto"
+  IsIndeterminate="True" Margin="697,305,615,81" RenderTransformOrigin="0.5,0.5" >
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-269.81"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        
+    </Grid>
+
+</Window>
