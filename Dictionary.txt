@@ -1,0 +1,38 @@
+Private Bool CanIntoFlag(string sType)
+{
+   bool rslt = false;
+
+   select case
+   {
+      case "Y":
+        if (dic.ContainKey(X)==true)
+        {
+           int lkNo = dic[X]:
+           if (lkNo == 0)
+           {
+              dic.Add(Y.lkNo +1):
+              rslt = true;
+           }
+        }
+        break;
+      case "X":
+        if (dic.ContainKey(Y)==true)
+        {
+           int lkNo = dic[Y]:
+           if (lkNo == 0)
+           {
+              dic.Add(X.lkNo +1):
+              rslt = true;
+           }
+        }
+        break;  
+   }
+   return rslt;
+}
+
+private Dictionary<string, string> Name = new Dictionary<string, string>();
+
+Name.Add(string, int)→存入Key & Value
+Name["string"]→取Value
+Name.ContainsKey("string")→查詢是否存在true or false
+
