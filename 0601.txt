@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Threading;
+
+namespace TestForms
+{    
+    public partial class Form3 : Form
+    {
+        int XSpeed = 1;
+        int YSpeed = 1;
+        public Form3()
+        {
+            InitializeComponent();            
+        }
+        Speed SpeedS = new Speed();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            SpeedS.Xspeed = XSpeed;
+            SpeedS.Yspeed = YSpeed;
+            Thread thread = new Thread(() =>
+            {                
+                while (true)
+                {
+                    int X = btn.Location.X;
+                    int Y = btn.Location.Y;
+                    btnrun(X, Y, btn);
+                    Thread.Sleep(10);
+                }
+            })
+            { IsBackground = true };            
+            thread.Start();           
+        }
+        class Speed
+        {
+            public int Xspeed { get; set; }
+            public int Yspeed { get; set; }
+        }
+        private void btnrun(int X, int Y, Button btn)
+        {
+            SpeedS.Xspeed = ((X + btn.Width) >= panel1.Width || X < 0) ? -SpeedS.Xspeed : SpeedS.Xspeed;
+            SpeedS.Yspeed = ((Y + btn.Height) >= panel1.Height || Y < 0) ? -SpeedS.Yspeed : SpeedS.Yspeed;            
+            X += SpeedS.Xspeed;
+            Y += SpeedS.Yspeed;
+            if (btn.InvokeRequired)
+            {                
+                Action safeWrite = delegate { btn.Location = new Point(X, Y); };
+                btn.Invoke(safeWrite);
+            }
+            else
+            {
+                btn.BackgroundImage = TestForms.Properties.Resources.imgs4;
+            }          
+        }
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            Button btn = (Button) sender;
+            btn.BackgroundImage = TestForms.Properties.Resources.imgs4;
+        }
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackgroundImage = TestForms.Properties.Resources.imgs3;
+        }
+    }
+    
+}
